@@ -23,7 +23,7 @@ function Form() {
             //Async and await - upon submitting the information, wait for the information to be fetched from the database(local host)
         })
         //Setting up the function to take the information given and post it to the database at the local host 4000
-        window.location.replace("nameless-inlet-47570.herokuapp.com");
+        window.location.replace("nameless-inlet-47570.herokuapp.com/puppy");
         //Returns it to the puppy window after you submit the information
     };
 
