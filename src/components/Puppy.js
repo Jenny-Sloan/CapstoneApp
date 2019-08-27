@@ -9,7 +9,7 @@ function Dogs() {
     const [age, setAge] = useState("");
     const [idState, setId] = useState("");
 
-    const fetchDogs = () => fetch("http://localhost:4000")
+    const fetchDogs = () => fetch("aqueous-chamber-71008.herokuapp.com/")
         .then(response => response.json())
         .then(dogs => setDogs(dogs))
 
@@ -18,32 +18,33 @@ function Dogs() {
     }, [])
 
     const handleForm = (dog) => {
-        console.log('handleForm')
         setName(dog.name)
         setBreed(dog.breed)
         setAge(dog.age)
         setId(dog._id)
-    }
+    }//setting state
+    //bringing in the dog properties. dog._id is coming from the database - using props
 
-    const handleEdit = async (e, idState) => {
+    const handleEdit = async (e, id) => {
         e.preventDefault()
-        console.log('handleEdit')
         const update = JSON.stringify({ name, breed, age })
-        console.log('Update:', update)
-        console.log('ID:', idState)
-        await fetch("http://localhost:4000/" + idState, {
+        await fetch("aqueous-chamber-71008.herokuapp.com/" + id, {
             method: "PUT",
             body: update,
             headers: {
                 'Content-Type': 'application/json'
             }
         })
+        //all the things needed for the database
 
         fetchDogs()
+        //hitting the database - the get request. refreshing the data on the screen for those to see the new info
         document.querySelector('.close').click();
     }
+    //it will close the window once its all been updated by selecting the element with the 'close' classname. This is calling to the modal in the bootstrap button 
+
     const handleDelete = async (id) => {
-        await fetch("http://localhost:4000/" + id, {
+        await fetch("aqueous-chamber-71008.herokuapp.com/" + id, {
             method: "DELETE"
         })
         //deleting a dog from the database
@@ -80,6 +81,7 @@ function Dogs() {
                                     </button>
                                 </div>
                                 <form onSubmit={e => handleEdit(e, idState)}>
+                                    {/* this idState is coming from the hooks */}
                                     <div className="form-group">
                                         <label htmlFor="exampleInputPassword1"><h3>NAME</h3></label>
                                         <input
