@@ -17,7 +17,7 @@ function Form() {
         //preventing the window reload to do what you want it to do 
         const data = JSON.stringify({ name, breed, age })
         //stringify - turns a javascript object into a json, Making it more readable to other programs
-        await fetch("aqueous-chamber-71008.herokuapp.com", {
+        await fetch("https://aqueous-chamber-71008.herokuapp.com", {
             method: "POST",
             //fetch is an API call. This is to Post the information
             body: data,
