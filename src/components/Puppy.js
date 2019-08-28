@@ -9,7 +9,7 @@ function Dogs() {
     const [age, setAge] = useState("");
     const [idState, setId] = useState("");
 
-    const fetchDogs = () => fetch("https://aqueous-chamber-71008.herokuapp.com")
+    const fetchDogs = () => fetch("https://aqueous-chamber-71008.herokuapp.com/")
         .then(response => response.json())
         .then(dogs => setDogs(dogs))
 
@@ -28,7 +28,7 @@ function Dogs() {
     const handleEdit = async (e, id) => {
         e.preventDefault()
         const update = JSON.stringify({ name, breed, age })
-        await fetch("https://aqueous-chamber-71008.herokuapp.com" + id, {
+        await fetch("https://aqueous-chamber-71008.herokuapp.com/" + id, {
             method: "PUT",
             body: update,
             headers: {
@@ -44,7 +44,7 @@ function Dogs() {
     //it will close the window once its all been updated by selecting the element with the 'close' classname. This is calling to the modal in the bootstrap button 
 
     const handleDelete = async (id) => {
-        await fetch("https://aqueous-chamber-71008.herokuapp.com" + id, {
+        await fetch("https://aqueous-chamber-71008.herokuapp.com/" + id, {
             method: "DELETE"
         })
         //deleting a dog from the database
